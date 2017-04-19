@@ -15,11 +15,11 @@ export default function country(): Object {
         )
       ),
 
-    species: (countryCode: string): Promise<any> =>
+    species: (options: Object = {}): Promise<any> =>
       new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed => {
-        if (!countryCode) return reject(new Error('Country ISO-code required.'));
+        if (!options.country) return reject(new Error('Country ISO-code is required.'));
         return sendRequest(
-          `/country/getspecies/${countryCode}`,
+          `/country/getspecies/${options.country}`,
           (err: Error | null, data?: Object): void => {
             if (err) return reject(new Error(err));
             return data ? resolve(data) : reject(new Error('No data found'));
