@@ -4,7 +4,7 @@ import { sendRequest } from './util';
 export default function species(): Object {
   return {
 
-    all: (options: Object = {}): Promise<any> =>
+    fetch: (options: Object = {}): Promise<any> =>
       new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed => {
         if (typeof options.page === 'undefined') {
           return reject(new Error('The page option is required.'));
@@ -40,10 +40,10 @@ export default function species(): Object {
         }
         let endpoint;
         if (options.region) {
-          if (options.id) endpoint = `/species/citation/${options.id}/region/${options.region}`;
+          if (options.id) endpoint = `/species/citation/id/${options.id}/region/${options.region}`;
           else endpoint = `/species/citation/${options.name}/region/${options.region}`;
         } else {
-          if (options.id) endpoint = `/species/citation/${options.id}`;
+          if (options.id) endpoint = `/species/citation/id/${options.id}`;
           else endpoint = `/species/citation/${options.name}`;
         }
         return sendRequest(
