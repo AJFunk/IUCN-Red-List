@@ -1,7 +1,7 @@
 ## IUCN Red List
 IUCN Red List API wrapper for Node.js
 
-[![Build Status](https://travis-ci.org/AJFunk/IUCN-Red-List.svg?branch=master)](https://travis-ci.org/AJFunk/IUCN-Red-List.svg?branch=master)
+[![Build Status](https://travis-ci.org/AJFunk/IUCN-Red-List.svg?branch=master)](https://travis-ci.org/AJFunk/IUCN-Red-List)
 
 This project has **no dependencies!** and uses modern ES2016+ syntax, which means you can use promises (as shown in the documentation) or async/await.
 
