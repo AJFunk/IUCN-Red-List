@@ -21,14 +21,6 @@ const sendRequest = (endpoint: string, cb: object): void => {
   req.end();
 };
 
-const checkRequiredOptions = (options: Object = {}, requirements: Array): mixed => {
-  for (let i = 0; i < requirements.length; i++) {
-    if (typeof options[requirements[i]] === 'undefined') return requirements[i];
-  }
-  return null;
-};
-
 export {
-  checkRequiredOptions,
   sendRequest,
 };
