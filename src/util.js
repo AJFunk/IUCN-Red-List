@@ -1,24 +1,10 @@
 import http from 'http';
 import { redListToken } from './config';
 
-const sendRequest = (endpoint: string,
-                     cb: object): undefined => {
-  // let url = `${endpoint}?`;
-  // if (options) {
-  //   for (const key in options) {
-  //     if (options.hasOwnProperty(key)) {
-  //       const validKey = typeof options[key] === 'string' ?
-  //         options[key].replace(/\s/g, '%20') : options[key];
-  //       url = `${url}${key}=${validKey}&`;
-  //     }
-  //   }
-  // }
-  // url = ``;
-  // if (url[url.length - 1] === '&') url = url.substr(0, url.length - 1);
-
+const sendRequest = (endpoint: string, cb: object): void => {
   const params = {
     host: 'apiv3.iucnredlist.org',
-    path: `/api/v3${endpoint}?token=${redListToken}`,
+    path: `/api/v3${encodeURI(endpoint)}?token=${redListToken}`,
     method: 'GET',
   };
 
