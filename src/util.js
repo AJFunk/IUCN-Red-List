@@ -18,7 +18,7 @@ const sendRequest = (endpoint: string,
 
   const params = {
     host: 'apiv3.iucnredlist.org',
-    path: `${endpoint}?api_key=${redListToken}`,
+    path: `/api/v3${endpoint}?token=${redListToken}`,
     method: 'GET',
   };
 

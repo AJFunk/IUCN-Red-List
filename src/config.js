@@ -6,16 +6,16 @@ const setRedListToken = (token: string): null => {
   return null;
 };
 
-const redListVersion = () =>
-  new Promise((resolve: object, reject: object): undefined => {
-    return sendRequest(
-      '/api/v3/version',
-      (err: string, data: object): undefined => {
+const redListVersion = (): Promise<any> =>
+  new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed =>
+    sendRequest(
+      '/version',
+      (err: Error | null, data?: Object): void => {
         if (err) return reject(new Error(err));
-        return resolve(data);
+        return data ? resolve(data) : reject(new Error('No data found'));
       }
-    );
-  });
+    )
+  );
 
 export {
   redListToken,

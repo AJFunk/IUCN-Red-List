@@ -1,9 +1,12 @@
 import {
+  redListVersion,
   setRedListToken,
-  redListVersion
 } from './config';
 
+const Country = require('./country')();
+
 export {
+  Country,
+  redListVersion,
   setRedListToken,
-  redListVersion
 };
