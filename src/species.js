@@ -40,11 +40,13 @@ export default function species(): Object {
         }
         let endpoint;
         if (options.hasOwnProperty('region')) {
-          if (options.hasOwnProperty('id')) endpoint = `/species/citation/id/${options.id}/region/${options.region}`;
-          else endpoint = `/species/citation/${options.name}/region/${options.region}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/citation/id/${options.id}/region/${options.region}` :
+            `/species/citation/${options.name}/region/${options.region}`;
         } else {
-          if (options.hasOwnProperty('id')) endpoint = `/species/citation/id/${options.id}`;
-          else endpoint = `/species/citation/${options.name}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/citation/id/${options.id}` :
+            `/species/citation/${options.name}`;
         }
         return sendRequest(
           endpoint,
@@ -57,7 +59,9 @@ export default function species(): Object {
 
     byCategory: (options: Object = {}): Promise<any> =>
       new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed => {
-        if (!options.hasOwnProperty('category')) return reject(new Error('The category option is required.'));
+        if (!options.hasOwnProperty('category')) {
+          return reject(new Error('The category option is required.'));
+        }
         return sendRequest(
           `/species/category/${options.category}`,
           (err: Error | null, data?: Object): void => {
@@ -74,11 +78,13 @@ export default function species(): Object {
         }
         let endpoint;
         if (options.hasOwnProperty('region')) {
-          if (options.hasOwnProperty('id')) endpoint = `/species/id/${options.id}/region/${options.region}`;
-          else endpoint = `/species/${options.name}/region/${options.region}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/id/${options.id}/region/${options.region}` :
+            `/species/${options.name}/region/${options.region}`;
         } else {
-          if (options.hasOwnProperty('id')) endpoint = `/species/id/${options.id}`;
-          else endpoint = `/species/${options.name}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/id/${options.id}` :
+            `/species/${options.name}`;
         }
         return sendRequest(
           endpoint,
@@ -96,11 +102,13 @@ export default function species(): Object {
         }
         let endpoint;
         if (options.hasOwnProperty('region')) {
-          if (options.hasOwnProperty('id')) endpoint = `/species/narrative/${options.id}/region/${options.region}`;
-          else endpoint = `/species/narrative/${options.name}/region/${options.region}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/narrative/${options.id}/region/${options.region}` :
+            `/species/narrative/${options.name}/region/${options.region}`;
         } else {
-          if (options.hasOwnProperty('id')) endpoint = `/species/narrative/${options.id}`;
-          else endpoint = `/species/narrative/${options.name}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/narrative/${options.id}` :
+            `/species/narrative/${options.name}`;
         }
         return sendRequest(
           endpoint,
@@ -113,7 +121,9 @@ export default function species(): Object {
 
     synonym: (options: Object = {}): Promise<any> =>
       new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed => {
-        if (!options.hasOwnProperty('name')) return reject(new Error('The name option is required.'));
+        if (!options.hasOwnProperty('name')) {
+          return reject(new Error('The name option is required.'));
+        }
         return sendRequest(
           `/species/synonym/${options.name}`,
           (err: Error | null, data?: Object): void => {
@@ -125,7 +135,9 @@ export default function species(): Object {
 
     commonNames: (options: Object = {}): Promise<any> =>
       new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed => {
-        if (!options.hasOwnProperty('name')) return reject(new Error('The name option is required.'));
+        if (!options.hasOwnProperty('name')) {
+          return reject(new Error('The name option is required.'));
+        }
         return sendRequest(
           `/species/common_names/${options.name}`,
           (err: Error | null, data?: Object): void => {
@@ -142,11 +154,13 @@ export default function species(): Object {
         }
         let endpoint;
         if (options.hasOwnProperty('region')) {
-          if (options.hasOwnProperty('id')) endpoint = `/species/countries/id/${options.id}/region/${options.region}`;
-          else endpoint = `/species/countries/name/${options.name}/region/${options.region}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/countries/id/${options.id}/region/${options.region}` :
+            `/species/countries/name/${options.name}/region/${options.region}`;
         } else {
-          if (options.hasOwnProperty('id')) endpoint = `/species/countries/id/${options.id}`;
-          else endpoint = `/species/countries/name/${options.name}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/countries/id/${options.id}` :
+            `/species/countries/name/${options.name}`;
         }
         return sendRequest(
           endpoint,
@@ -164,11 +178,13 @@ export default function species(): Object {
         }
         let endpoint;
         if (options.hasOwnProperty('region')) {
-          if (options.hasOwnProperty('id')) endpoint = `/species/history/id/${options.id}/region/${options.region}`;
-          else endpoint = `/species/history/name/${options.name}/region/${options.region}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/history/id/${options.id}/region/${options.region}` :
+            `/species/history/name/${options.name}/region/${options.region}`;
         } else {
-          if (options.hasOwnProperty('id')) endpoint = `/species/history/id/${options.id}`;
-          else endpoint = `/species/history/name/${options.name}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/species/history/id/${options.id}` :
+            `/species/history/name/${options.name}`;
         }
         return sendRequest(
           endpoint,

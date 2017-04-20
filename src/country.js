@@ -17,7 +17,9 @@ export default function country(): Object {
 
     species: (options: Object = {}): Promise<any> =>
       new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed => {
-        if (!options.hasOwnProperty('country')) return reject(new Error('The country option is required.'));
+        if (!options.hasOwnProperty('country')) {
+          return reject(new Error('The country option is required.'));
+        }
         return sendRequest(
           `/country/getspecies/${options.country}`,
           (err: Error | null, data?: Object): void => {

@@ -4,7 +4,7 @@ import { redListToken } from './config';
 const sendRequest = (endpoint: string, cb: object): void => {
   const params = {
     host: 'apiv3.iucnredlist.org',
-    path: `/api/v3${encodeURI(endpoint)}?token=${redListToken}`,
+    path: `/api/v3${endpoint.replace(/\s/g, '%20')}?token=${redListToken}`,
     method: 'GET',
   };
 

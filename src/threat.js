@@ -11,11 +11,13 @@ export default function threat(): Object {
         }
         let endpoint;
         if (options.hasOwnProperty('region')) {
-          if (options.hasOwnProperty('id')) endpoint = `/threats/species/id/${options.id}/region/${options.region}`;
-          else endpoint = `/threats/species/name/${options.name}/region/${options.region}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/threats/species/id/${options.id}/region/${options.region}` :
+            `/threats/species/name/${options.name}/region/${options.region}`;
         } else {
-          if (options.hasOwnProperty('id')) endpoint = `/threats/species/id/${options.id}`;
-          else endpoint = `/threats/species/name/${options.name}`;
+          endpoint = options.hasOwnProperty('id') ?
+            `/threats/species/id/${options.id}` :
+            `/threats/species/name/${options.name}`;
         }
         return sendRequest(
           endpoint,
