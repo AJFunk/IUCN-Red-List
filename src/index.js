@@ -6,6 +6,7 @@ import {
 const Country = require('./country')();
 const Region = require('./region')();
 const Species = require('./species')();
+const Threat = require('./threat')();
 
 export {
   Country,
@@ -13,4 +14,5 @@ export {
   Region,
   setRedListToken,
   Species,
+  Threat,
 };
