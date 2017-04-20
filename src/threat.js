@@ -1,5 +1,8 @@
 // @flow
-import { sendRequest } from './util';
+import {
+  handleResult,
+  sendRequest,
+} from './util';
 
 export default function threat(): Object {
   return {
@@ -21,10 +24,9 @@ export default function threat(): Object {
         }
         return sendRequest(
           endpoint,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 

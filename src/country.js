@@ -1,5 +1,8 @@
 // @flow
-import { sendRequest } from './util';
+import {
+  handleResult,
+  sendRequest,
+} from './util';
 
 export default function country(): Object {
   return {
@@ -8,10 +11,9 @@ export default function country(): Object {
       new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed =>
         sendRequest(
           '/country/list',
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         )
       ),
 
@@ -22,10 +24,9 @@ export default function country(): Object {
         }
         return sendRequest(
           `/country/getspecies/${options.country}`,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 

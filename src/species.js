@@ -1,5 +1,8 @@
 // @flow
-import { sendRequest } from './util';
+import {
+  handleResult,
+  sendRequest,
+} from './util';
 
 export default function species(): Object {
   return {
@@ -13,10 +16,9 @@ export default function species(): Object {
           options.hasOwnProperty('region') ?
             `/species/region/${options.region}/page/${options.page}` :
             `/species/page/${options.page}`,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+            resolve,
+            reject,
+            handleResult
         );
       }),
 
@@ -26,10 +28,9 @@ export default function species(): Object {
           options.hasOwnProperty('region') ?
             `/speciescount/region/${options.region}` :
             '/speciescount',
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+            resolve,
+            reject,
+            handleResult
         )
       ),
 
@@ -50,10 +51,9 @@ export default function species(): Object {
         }
         return sendRequest(
           endpoint,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
@@ -64,10 +64,9 @@ export default function species(): Object {
         }
         return sendRequest(
           `/species/category/${options.category}`,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
@@ -88,10 +87,9 @@ export default function species(): Object {
         }
         return sendRequest(
           endpoint,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
@@ -112,10 +110,9 @@ export default function species(): Object {
         }
         return sendRequest(
           endpoint,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
@@ -126,10 +123,9 @@ export default function species(): Object {
         }
         return sendRequest(
           `/species/synonym/${options.name}`,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
@@ -140,10 +136,9 @@ export default function species(): Object {
         }
         return sendRequest(
           `/species/common_names/${options.name}`,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
@@ -164,10 +159,9 @@ export default function species(): Object {
         }
         return sendRequest(
           endpoint,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
@@ -188,10 +182,9 @@ export default function species(): Object {
         }
         return sendRequest(
           endpoint,
-          (err: Error | null, data?: Object): void => {
-            if (err) return reject(new Error(err));
-            return data ? resolve(data) : reject(new Error('No data found'));
-          }
+          resolve,
+          reject,
+          handleResult
         );
       }),
 
