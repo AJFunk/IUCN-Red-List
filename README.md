@@ -37,6 +37,9 @@ Be sure to reference the [Red List API docs](http://apiv3.iucnredlist.org/api/v3
 * [Country.all()](#country-all)
 * [Country.species()](#country-species)
 
+## Habitat - Species habitat information
+* [Habitat.fetch()](#habitat-fetch)
+
 ## Region - Region information
 * [Region.all()](#region-all)
 
@@ -76,6 +79,22 @@ Retrieves a list of species by country
 ```javascript
 Country
   .species({ country: 'AZ' })
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+```
+
+<h3 id='habitat-fetch'>Habitat.fetch(options)</h3>
+
+Retrieves a list of habitats by species
+
+##### `options` (required) - **[Object]**
+* `name` (required) - **[String]** Name of species. If `name` is not provided, `id` must be provided
+* `id` (required) - **[String/Number]** ID of species. If `id` is not provided, `name` must be provided. If both `id` and `name` are provided, `id` will take precedent and `name` will be ignored
+* `region` (optional) - **[String]** If provided, this option will return a regional assessment of the habitats. Must be a valid region (see [Region.all()](#region-all))
+
+```javascript
+Habitat
+  .fetch({ name: 'Fratercula arctica', region: 'europe' })
   .then(data => console.log(data))
   .catch(err => console.log(err));
 ```
