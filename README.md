@@ -40,6 +40,9 @@ Be sure to reference the [Red List API docs](http://apiv3.iucnredlist.org/api/v3
 ## Habitat - Species habitat information
 * [Habitat.fetch()](#habitat-fetch)
 
+## Measure - Species conservation measures information
+* [Measure.fetch()](#measure-fetch)
+
 ## Region - Region information
 * [Region.all()](#region-all)
 
@@ -94,7 +97,23 @@ Retrieves a list of habitats by species
 
 ```javascript
 Habitat
-  .fetch({ name: 'Fratercula arctica', region: 'europe' })
+  .fetch({ name: 'Ursus maritimus', region: 'europe' })
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+```
+
+<h3 id='measure-fetch'>Measure.fetch(options)</h3>
+
+Retrieves a list of conservation measures by species
+
+##### `options` (required) - **[Object]**
+* `name` (required) - **[String]** Name of species. If `name` is not provided, `id` must be provided
+* `id` (required) - **[String/Number]** ID of species. If `id` is not provided, `name` must be provided. If both `id` and `name` are provided, `id` will take precedent and `name` will be ignored
+* `region` (optional) - **[String]** If provided, this option will return a regional assessment of the measures. Must be a valid region (see [Region.all()](#region-all))
+
+```javascript
+Measure
+  .fetch({ name: 'Ursus maritimus', region: 'europe' })
   .then(data => console.log(data))
   .catch(err => console.log(err));
 ```
