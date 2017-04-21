@@ -188,5 +188,18 @@ export default function species(): Object {
         );
       }),
 
+    link: (options: Object = {}): Promise<any> =>
+      new Promise((resolve: (data: Object) => void, reject: (reason: Error) => void): mixed => {
+        if (!options.hasOwnProperty('name')) {
+          return reject(new Error('The name option is required.'));
+        }
+        return sendRequest(
+          `/weblink/${options.name}`,
+          resolve,
+          reject,
+          handleResult
+        );
+      }),
+
   };
 }

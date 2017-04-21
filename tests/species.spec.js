@@ -278,3 +278,16 @@ describe('Species.historical()', () => {
     Species.historical().catch(err => expect(err).to.be.an('error'))
   );
 });
+
+describe('Species.link()', () => {
+  it('returns object with link', () =>
+    Species.link({ name: 'loxodonta africana' }).then(data => {
+      expect(data).to.be.instanceof(Object);
+      return expect(data.rlurl).to.be.exist;
+    })
+  );
+
+  it('returns error message', () =>
+    Species.link().catch(err => expect(err).to.be.an('error'))
+  );
+});

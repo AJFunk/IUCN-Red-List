@@ -13,9 +13,12 @@ npm install --save iucn-red-list
 ```javascript
 import {
   Country,
+  GrowthForms,
+  Habitat,
+  Measure,
   Region,
   Species,
-  Threat
+  Threat,
 } from 'iucn-red-list';
 ```
 Only import the modules you need. For example, if you only need the `Country` and `Threat` modules:
@@ -29,6 +32,13 @@ To set your API Key, set the environment variable `RED_LIST_TOKEN`. Alternativel
 ```javascript
 import { setRedListToken } from 'iucn-red-list';
 setRedListToken('<your-token>')
+```
+
+### Checking the Red List version
+To check what version of the IUCN Red List is driving the API:
+```javascript
+import { redListVersion } from 'iucn-red-list';
+redListVersion().then(data => console.log(data));
 ```
 
 Be sure to reference the [Red List API docs](http://apiv3.iucnredlist.org/api/v3/docs)
@@ -50,16 +60,16 @@ Be sure to reference the [Red List API docs](http://apiv3.iucnredlist.org/api/v3
 * [Region.all()](#region-all)
 
 ## Species - Published species on the Red List
-* [species.fetch()](#species-fetch)
-* [species.count()](#species-count)
-* [species.citation()](#species-citation)
-* [species.byCategory()](#species-byCategory)
-* [species.find()](#species-find)
-* [species.narrative()](#species-narrative)
-* [species.synonym()](#species-synonym)
-* [species.commonNames()](#species-commonNames)
-* [species.countries()](#species-countries)
-* [species.historical()](#species-historical)
+* [Species.fetch()](#species-fetch)
+* [Species.count()](#species-count)
+* [Species.citation()](#species-citation)
+* [Species.byCategory()](#species-byCategory)
+* [Species.find()](#species-find)
+* [Species.narrative()](#species-narrative)
+* [Species.synonym()](#species-synonym)
+* [Species.commonNames()](#species-commonNames)
+* [Species.countries()](#species-countries)
+* [Species.historical()](#species-historical)
 
 ## Threat - Species threat information
 * [Threat.fetch()](#threat-fetch)
@@ -295,6 +305,20 @@ Retrieve a list of historical assessments by species name (including the current
 ```javascript
 Species
   .narrative({ name: 'Ursus maritimus', region: 'europe' })
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+```
+
+<h3 id='species-synonym'>Species.synonym(options)</h3>
+
+Retrieve a direct link to the species page on the Red List website
+
+##### `options` (required) - **[Object]**
+* `name` (required) - **[String]** Name (or synonym) of species.
+
+```javascript
+Species
+  .link({ name: 'Loxodonta Africana' })
   .then(data => console.log(data))
   .catch(err => console.log(err));
 ```
