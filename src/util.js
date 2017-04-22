@@ -25,7 +25,7 @@ const sendRequest = (endpoint: string,
     }
     let body = '';
     res.on('data', (c: object): void => {
-      body += c;
+      body += c.toString();
     });
     res.on('end', (): object => cb(resolve, reject, null, JSON.parse(body)));
     return null;

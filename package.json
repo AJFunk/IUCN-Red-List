@@ -1,6 +1,6 @@
 {
   "name": "iucn-red-list",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "SDK for IUCN Red List API",
   "author": "AJ Funk <aj@ajfunk.me>",
   "main": "lib/index.js",
