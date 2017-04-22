@@ -23,9 +23,11 @@ const sendRequest = (endpoint: string,
     if (res.statusCode < 200 || res.statusCode >= 300) {
       return cb(resolve, reject, `statusCode=${res.statusCode}`);
     }
-    const buf = [];
-    res.on('data', (c: object): object => buf.push(c));
-    res.on('end', (): object => cb(resolve, reject, null, JSON.parse(Buffer.concat(buf))));
+    let body = '';
+    res.on('data', (c: object): void => {
+      body += c;
+    });
+    res.on('end', (): object => cb(resolve, reject, null, JSON.parse(body)));
     return null;
   });
   req.on('error', (err: object): object => cb(resolve, reject, err));
