@@ -1,6 +1,6 @@
 {
   "name": "iucn-red-list",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "SDK for IUCN Red List API",
   "author": "AJ Funk <aj@ajfunk.me>",
   "main": "lib/index.js",
@@ -40,7 +40,9 @@
     "flow-bin": "^0.44.0",
     "mocha": "^2.4.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel-runtime": "^6.23.0"
+  },
   "bugs": {
     "url": "https://github.com/AJFunk/IUCN-Red-List/issues"
   },
